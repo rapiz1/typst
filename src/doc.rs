@@ -11,7 +11,7 @@ use crate::eval::{cast_from_value, cast_to_value, dict, Dict, Value};
 use crate::font::Font;
 use crate::geom::{
     self, rounded_rect, Abs, Align, Axes, Color, Corners, Dir, Em, Geometry, Length,
-    Numeric, Paint, Point, Rel, RgbaColor, Shape, Sides, Size, Stroke, Transform,
+    Numeric, Paint, Point, Rel, RgbaColor, Shape, Sides, Size, Stroke, Transform, PartialStroke,
 };
 use crate::image::Image;
 use crate::model::{Content, Location, MetaElem, StyleChain};
@@ -474,6 +474,8 @@ pub struct TextItem {
     pub size: Abs,
     /// Glyph color.
     pub fill: Paint,
+    /// Stroke
+    pub stroke: Option<PartialStroke<Abs>>,
     /// The natural language of the text.
     pub lang: Lang,
     /// The glyphs.

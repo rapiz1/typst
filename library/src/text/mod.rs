@@ -155,6 +155,14 @@ pub struct TextElem {
     #[default(Color::BLACK.into())]
     pub fill: Paint,
 
+    /// How to stroke the text.
+    ///
+    /// ```example
+    /// #set text(stroke: 1pt)
+    /// ```
+    #[resolve]
+    pub stroke: Option<PartialStroke>,
+
     /// The amount of space that should be added between characters.
     ///
     /// ```example

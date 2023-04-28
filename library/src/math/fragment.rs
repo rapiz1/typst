@@ -221,6 +221,7 @@ impl GlyphFragment {
             font: self.font.clone(),
             size: self.font_size,
             fill: self.fill,
+            stroke: None,
             lang: self.lang,
             glyphs: vec![Glyph {
                 id: self.id.0,

@@ -374,6 +374,11 @@ fn write_text(ctx: &mut PageContext, x: f32, y: f32, text: &TextItem) {
     ctx.set_font(&text.font, text.size);
     ctx.content.begin_text();
 
+    if let Some(stroke) = &text.stroke {
+        ctx.set_stroke(&(stroke.clone()).unwrap_or_default());
+        ctx.content.set_text_rendering_mode(pdf_writer::types::TextRenderingMode::FillStroke);
+    }
+
     // Positiosn the text.
     ctx.content.set_text_matrix([1.0, 0.0, 0.0, -1.0, x, y]);
 
@@ -412,6 +417,9 @@ fn write_text(ctx: &mut PageContext, x: f32, y: f32, text: &TextItem) {
 
     items.finish();
     positioned.finish();
+    if text.stroke.is_some() {
+        ctx.content.set_text_rendering_mode(pdf_writer::types::TextRenderingMode::Fill);
+    }
     ctx.content.end_text();
 }
 
